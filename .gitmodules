@@ -1,0 +1,8 @@
+[submodule "meson"]
+	path = meson
+	url = git@github.com:Panke/meson.git
+	branch = root-include
+[submodule "dub2nix"]
+	path = dub2nix
+	url = git@github.com:Panke/dub2nix.git
+	branch = library-dependencies
