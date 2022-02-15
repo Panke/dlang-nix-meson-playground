@@ -4,9 +4,15 @@ let meson = pkgs.meson_0_60.overrideAttrs (
     src = ./meson;
   }
 );
-dub2nix = import  ./dub2nix {};
+#dub2nix = import  ./dub2nix {};
+dub = pkgs.dub.overrideAttrs (
+  oldAttrs: rec {
+    src = builtins.path { path= ../dub; name = "source"; };
+    doCheck = false;
+  }
+);
 in
 pkgs.mkShell {
-  nativeBuildInputs = [ pkgs.dub pkgs.ldc pkgs.meson_0_60 pkgs.zeromq pkgs.pkg-config pkgs.ninja pkgs.nix-prefetch-git dub2nix ];
+  nativeBuildInputs = [ dub pkgs.ldc pkgs.meson_0_60 pkgs.zeromq pkgs.pkg-config pkgs.ninja ];
 }
 

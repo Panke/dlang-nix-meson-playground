@@ -1,0 +1,1 @@
+This uses a library dependency (zmqd) that itself depends on a C library (libzmq).
